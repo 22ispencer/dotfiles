@@ -1,0 +1,51 @@
+theme = "sonokai_shusia"
+
+[editor]
+true-color = true
+bufferline = "multiple"
+line-number = "relative"
+mouse = false
+auto-completion = true
+auto-format = true
+text-width = 80
+gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
+soft-wrap.enable = true
+soft-wrap.max-indent-retain = 80
+default-line-ending = "crlf"
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["mode", "spinner", "file-modification-indicator", "read-only-indicator"]
+center = ["file-name"]
+right = [
+  "diagnostics",
+  "register",
+  "selections",
+  "position",
+  "file-encoding",
+  "file-line-ending",
+  "file-type",
+]
+separator = "│"
+mode.normal = "LOCKED"
+mode.insert = "WORKING"
+mode.select = "VISUAL"
+
+[editor.lsp]
+enable = true
+auto-signature-help = true
+display-messages = false
+
+[editor.indent-guides]
+render = true
+character = "┊"
+skip-levels = 1
+
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'

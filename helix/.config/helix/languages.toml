@@ -1,0 +1,148 @@
+[[language]]
+name = "typescript"
+language-servers = ["typescript-language-server", "eslint"]
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+auto-format = true
+
+
+[[language]]
+name = "javascript"
+language-servers = ["typescript-language-server", "eslint"]
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+auto-format = true
+
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[language-server.eslint.config]
+codeActionsOnSave = { mode = "all", "source.fixAll.eslint" = true }
+format = { enable = true }
+nodePath = ""
+quiet = false
+rulesCustomizations = []
+run = "onType"
+validate = "on"
+experimental = {}
+problems = { shortenToSingleLine = false }
+
+[language-server.eslint.config.codeAction]
+disableRuleComment = { enable = true, location = "separateLine" }
+showDocumentation = { enable = false }
+
+
+[[language]]
+name = "jsx"
+language-servers = ["typescript-language-server", "eslint", "tailwindcss"]
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+auto-format = true
+
+
+[[language]]
+name = "tsx"
+language-servers = ["typescript-language-server", "eslint", "tailwindcss"]
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+auto-format = true
+
+
+[[language]]
+name = "json"
+formatter = { command = "prettier", args = ["--parser", "json"] }
+auto-format = true
+
+[language-server.vscode-json-language-server.config]
+json = { validate = { enable = true }, format = { enable = true } }
+provideFormatter = true
+
+
+[[language]]
+name = "html"
+language-servers = ["vscode-html-language-server", "tailwindcss"]
+formatter = { command = "prettier", args = ["--parser", "html"] }
+auto-format = false
+
+
+[[language]]
+name = "css"
+language-servers = ["vscode-css-language-server"]
+formatter = { command = "prettier", args = ["--parser", "css"] }
+auto-format = true
+
+[language-server.vscode-css-language-server.config]
+css = { validate = { enable = true } }
+scss = { validate = { enable = true } }
+less = { validate = { enable = true } }
+provideFormatter = true
+
+[language-server.tailwindcss]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+
+
+[[language]]
+name = "rust"
+auto-format = true
+roots = ["Cargo.toml", "Cargo.lock"]
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config]
+inlayHints.bindingModeHints.enable = false
+inlayHints.closingBraceHints.minLines = 10
+inlayHints.closureReturnTypeHints.enable = "with_block"
+inlayHints.discriminantHints.enable = "fieldless"
+inlayHints.lifetimeElisionHints.enable = "skip_trivial"
+inlayHints.typeHints.hideClosureInitialization = false
+
+
+[[language]]
+name = "toml"
+auto-format = true
+formatter = { command = "taplo", args = ["fmt", "-"] }
+
+
+[[language]]
+name = "python"
+language-servers = ["pyright", "ruff"]
+auto-format = true
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
+
+[language-server.ruff]
+command = "ruff-lsp"
+
+[language-server.ruff.config.settings]
+args = ["--ignore", "E501"]
+
+[language.formatter]
+command = "black"
+args = ["--line-length", "88", "--quiet", "-"]
+
+
+[[language]]
+name = "c-sharp"
+scope = "source.csharp"
+injection-regex = "c-?sharp"
+file-types = ["cs", "csx", "cake"]
+roots = ["sln", "csproj"]
+comment-token = "//"
+indent = { tab-width = 4, unit = "\t" }
+language-servers = ["omnisharp"]
+auto-format = true
+
+[language-server.csharp-ls]
+command = "csharp-ls"
+
+
+[[language]]
+name = "go"
+auto-format = true
+formatter = { command = "goimports" }
+
+
+[[language]]
+name = "templ"
+auto-format = true
+language-servers = ["templ", "tailwind"]
