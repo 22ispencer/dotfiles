@@ -20,6 +20,7 @@ return {
         "lua-language-server",
         "markdownlint",
         "marksman",
+        "matlab-language-server",
         "netcoredbg",
         "omnisharp",
         "pyright",
