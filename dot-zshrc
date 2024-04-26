@@ -99,6 +99,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+if [[ "$(uname)" == "Darwin" ]]; then
+  export PATH="$PATH:/opt/homebrew/bin"
+fi
 
 export PATH="$PATH:/Users/isaacspencer/go/bin"
 eval "$(starship init zsh)"
