@@ -100,8 +100,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 if [[ "$(uname)" == "Darwin" ]]; then
-  export PATH="$PATH:/opt/homebrew/bin"
+  export PATH="/opt/homebrew/bin:$PATH"
 fi
+
+alias pnv="poetry run nvim"
 
 export PATH="$PATH:/Users/isaacspencer/go/bin"
 eval "$(starship init zsh)"
