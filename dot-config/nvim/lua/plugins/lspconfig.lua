@@ -13,5 +13,8 @@ return {
             }
         }
         lspconfig.gleam.setup{}
+        lspconfig.html.setup{
+            filetypes = { "matcha" }
+        }
     end,
 }

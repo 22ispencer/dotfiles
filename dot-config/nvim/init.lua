@@ -20,5 +20,11 @@ vim.opt.expandtab = true
 vim.opt.mouse = ""
 vim.opt.relativenumber = true
 
+vim.filetype.add{
+    extensions = {
+        matcha = "html"
+    }
+}
+
 
 require("lazy").setup("plugins")
