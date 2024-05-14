@@ -409,6 +409,7 @@ later(function()
 	-- require("lspconfig").
 	require("lspconfig").ansiblels.setup({})
 	require("lspconfig").gopls.setup({})
+	require("lspconfig").omnisharp.setup({})
 	-- require('lspconfig').yamlls.setup {}
 	local null_ls = require("null-ls")
 	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -429,6 +430,7 @@ later(function()
 		end,
 		sources = {
 			null_ls.builtins.formatting.stylua,
+			null_ls.builtins.formatting.csharpier,
 		},
 	})
 end)

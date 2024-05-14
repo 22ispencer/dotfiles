@@ -38,6 +38,10 @@ keymap("n", "<leader>wq", "<cmd>wqa<cr>", { noremap = true, silent = true, desc 
 keymap("n", "<leader>ul", "<cmd>Lazy<cr>", { noremap = true, silent = true, desc = "Lazy" })
 keymap("", "ö", ":")
 
+-- Tab for completion
+keymap("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
+keymap("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
+
 -- Finding Stuff
 keymap("n", "<leader>ff", function()
 	MiniPick.builtin.files()
