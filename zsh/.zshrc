@@ -88,6 +88,9 @@ else
   export EDITOR='hx'
 fi
 
+if [ ! -e /run/user/1000/wayland-0 ]; then
+  ln -s /mnt/wslg/runtime-dir/wayland-0* /run/user/1000
+fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
