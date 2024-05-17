@@ -410,6 +410,7 @@ later(function()
 	require("lspconfig").ansiblels.setup({})
 	require("lspconfig").gopls.setup({})
 	require("lspconfig").omnisharp.setup({})
+	require("lspconfig").elixirls.setup({})
 	-- require('lspconfig').yamlls.setup {}
 	local null_ls = require("null-ls")
 	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -431,6 +432,7 @@ later(function()
 		sources = {
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.csharpier,
+			null_ls.builtins.formatting.mix,
 		},
 	})
 end)
@@ -439,7 +441,15 @@ later(function()
 	add({
 		source = "nvim-treesitter/nvim-treesitter",
 	})
-	require("nvim-treesitter.configs").setup({})
+	require("nvim-treesitter.configs").setup({
+		ensure_installed = "all",
+		sync_install = false,
+		ignore_install = {},
+		highlight = {
+			enable = true,
+			disable = {},
+		},
+	})
 end)
 
 require("autocmds")
