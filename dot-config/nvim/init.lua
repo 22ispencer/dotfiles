@@ -22,7 +22,7 @@ local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
 now(function()
     vim.g.mapleader = " "
-    if package.config:sub(1,1) == "\\" then
+    if package.config:sub(1, 1) == "\\" then
         vim.o.shell = "pwsh"
     end
     vim.o.backup = false
@@ -460,6 +460,13 @@ later(function()
             "nvim-lua/plenary.nvim",
         },
     })
+    add({
+        source = "jay-babu/mason-null-ls.nvim",
+        depends = {
+            "williamboman/mason.nvim",
+            "nvimtools/none-ls.nvim",
+        },
+    })
     require("mason").setup()
     require("mason-lspconfig").setup({
         ensure_installed = {
@@ -468,7 +475,7 @@ later(function()
         handlers = {
             function(server_name)
                 require("lspconfig")[server_name].setup({})
-            end
+            end,
         },
 
         lua_ls = function()
@@ -524,34 +531,42 @@ later(function()
                     },
                 },
             })
-        end
+        end,
     })
-    -- require('lspconfig').yamlls.setup {}
     local null_ls = require("null-ls")
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-    null_ls.setup({
-        on_attach = function(client, bufnr)
-            if client.supports_method("textDocument/formatting") then
-                vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-                vim.api.nvim_create_autocmd("BufWritePre", {
-                    group = augroup,
-                    buffer = bufnr,
-                    callback = function()
-                        -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-                        -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
-                        vim.lsp.buf.format({ async = false })
-                    end,
-                })
-            end
-        end,
-        sources = {
-            null_ls.builtins.formatting.stylua,
-            null_ls.builtins.formatting.gofumpt,
-            null_ls.builtins.formatting.csharpier,
-            null_ls.builtins.formatting.black,
-            null_ls.builtins.formatting.rustywind.with({
-                extra_filetypes = { "templ" },
-            }),
+    -- null_ls.setup({
+    -- 	on_attach = function(client, bufnr)
+    -- 		if client.supports_method("textDocument/formatting") then
+    -- 			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    -- 			vim.api.nvim_create_autocmd("BufWritePre", {
+    -- 				group = augroup,
+    -- 				buffer = bufnr,
+    -- 				callback = function()
+    -- 					-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+    -- 					-- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
+    -- 					vim.lsp.buf.format({ async = false })
+    -- 				end,
+    -- 			})
+    -- 		end
+    -- 	end,
+    -- 	sources = {
+    -- 		null_ls.builtins.formatting.stylua,
+    -- 		null_ls.builtins.formatting.gofumpt,
+    -- 		null_ls.builtins.formatting.csharpier,
+    -- 		null_ls.builtins.formatting.black,
+    -- 		null_ls.builtins.formatting.rustywind.with({
+    -- 			extra_filetypes = { "templ" },
+    -- 		}),
+    -- 	},
+    -- })
+    require("mason-null-ls").setup({
+        handlers = {
+            rustywind = function()
+                null_ls.register(null_ls.builtins.formatting.rustywind.with({
+                    extra_filetypes = { "templ" },
+                }))
+            end,
         },
     })
 end)

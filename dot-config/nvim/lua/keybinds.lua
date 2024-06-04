@@ -142,6 +142,7 @@ end, { noremap = true, silent = true, desc = "Rename This" })
 keymap("n", "<leader>la", function()
     vim.lsp.buf.code_action()
 end, { noremap = true, silent = true, desc = "Code Actions" })
+keymap("n", "<leader>li", "<cmd>LspInfo<cr>", { noremap = true, silent = true, desc = "LSP Info" })
 
 -- Code Related Keymaps
 keymap("n", "<leader>cm", "<cmd>Mason<cr>", { noremap = true, silent = true, desc = "Open Mason" })
