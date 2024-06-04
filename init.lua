@@ -22,7 +22,9 @@ local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
 now(function()
     vim.g.mapleader = " "
-    vim.o.shell = "pwsh"
+    if package.config:sub(1,1) == "\\" then
+        vim.o.shell = "pwsh"
+    end
     vim.o.backup = false
     vim.o.writebackup = false
     vim.o.undofile = true
