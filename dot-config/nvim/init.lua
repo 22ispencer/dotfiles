@@ -73,6 +73,11 @@ now(function()
 end)
 
 later(function()
+    add("m4xshen/hardtime.nvim")
+    require("hardtime").setup({})
+end)
+
+later(function()
     require("mini.ai").setup()
 end)
 later(function()
@@ -183,6 +188,11 @@ later(function()
 end)
 later(function()
     require("mini.colors").setup()
+end)
+later(function()
+    add("xiyaowong/transparent.nvim")
+    vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "@number" })
+    vim.g.transparent_enabled = true
 end)
 later(function()
     require("mini.comment").setup()
@@ -470,9 +480,9 @@ later(function()
     require("mason").setup()
     require("mason-lspconfig").setup()
 
-    require("mason-lspconfig").setup_handlers {
-        function (server_name) -- default handler (optional)
-            require("lspconfig")[server_name].setup {}
+    require("mason-lspconfig").setup_handlers({
+        function(server_name) -- default handler (optional)
+            require("lspconfig")[server_name].setup({})
         end,
         lua_ls = function()
             require("lspconfig").lua_ls.setup({
@@ -528,7 +538,7 @@ later(function()
                 },
             })
         end,
-    }
+    })
     local null_ls = require("null-ls")
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
     -- null_ls.setup({
