@@ -223,10 +223,10 @@ later(function()
             preview = true,
             width_preview = 80,
         },
-        mappings = {
-            go_out = "j",
-            go_out_plus = "J",
-        },
+        -- mappings = {
+        --     go_out = "j",
+        --     go_out_plus = "J",
+        -- },
     })
 end)
 later(function()

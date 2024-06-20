@@ -42,12 +42,12 @@ keymap("n", "U", "<C-r>", { noremap = true })
 keymap("n", "d/", "<cmd>noh<cr>", { noremap = true, silent = true })
 
 -- COLEMAK Bindings
-keymap("n", "j", "h", { noremap = true, silent = true })
-keymap("n", "k", "j", { noremap = true, silent = true })
-keymap("n", "h", "k", { noremap = true, silent = true })
-keymap("v", "j", "h", { noremap = true, silent = true })
-keymap("v", "k", "j", { noremap = true, silent = true })
-keymap("v", "h", "k", { noremap = true, silent = true })
+-- keymap("n", "j", "h", { noremap = true, silent = true })
+-- keymap("n", "k", "j", { noremap = true, silent = true })
+-- keymap("n", "h", "k", { noremap = true, silent = true })
+-- keymap("v", "j", "h", { noremap = true, silent = true })
+-- keymap("v", "k", "j", { noremap = true, silent = true })
+-- keymap("v", "h", "k", { noremap = true, silent = true })
 
 -- Tab completion
 keymap("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
