@@ -74,7 +74,7 @@ end)
 
 later(function()
     add("m4xshen/hardtime.nvim")
-    require("hardtime").setup({})
+    -- require("hardtime").setup({})
 end)
 
 later(function()
