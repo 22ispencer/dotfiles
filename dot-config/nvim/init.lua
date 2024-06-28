@@ -38,12 +38,12 @@ vim.keymap.set("n", "mf", "<C-f>", { desc = "Page down" })
 vim.keymap.set("n", "mb", "<C-b>", { desc = "Page up" })
 
 -- Change split with leader
-vim.keymap.set("n", "<Leader>wh", "<C-w>h", { desc = "Left"})
-vim.keymap.set("n", "<Leader>wl", "<C-w>l", { desc = "Right"})
-vim.keymap.set("n", "<Leader>wj", "<C-w>j", { desc = "Down"})
-vim.keymap.set("n", "<Leader>wk", "<C-w>k", { desc = "Up"})
+vim.keymap.set("n", "<Leader>wh", "<C-w>h", { desc = "Left" })
+vim.keymap.set("n", "<Leader>wl", "<C-w>l", { desc = "Right" })
+vim.keymap.set("n", "<Leader>wj", "<C-w>j", { desc = "Down" })
+vim.keymap.set("n", "<Leader>wk", "<C-w>k", { desc = "Up" })
 
-vim.keymap.set("n", "d/", "<cmd>noh<cr>", { desc = "Clear highlight"})
+vim.keymap.set("n", "d/", "<cmd>noh<cr>", { desc = "Clear highlight" })
 
 -- Lazy plugins
 require("lazy").setup({
@@ -109,7 +109,15 @@ require("lazy").setup({
 				"jump2d",
 				"notify",
 				"pairs",
-				"starter",
+				{ "starter",
+                    opts = {
+                        items = {
+                            require("mini.starter").sections.recent_files(5, true),
+                            require("mini.starter").sections.recent_files(5, false),
+                            require("mini.starter").sections.builtin_actions(),
+                        }
+                    }
+                },
 				"statusline",
 				"surround",
 				"tabline",
@@ -374,10 +382,8 @@ require("lazy").setup({
 	},
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-		},
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+		dependencies = { "nvim-telescope/telescope.nvim" },
 		config = function()
 			require("telescope").load_extension("fzf")
 		end,
