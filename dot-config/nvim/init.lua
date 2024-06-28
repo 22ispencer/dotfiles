@@ -25,9 +25,25 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wrap = false
 vim.opt.clipboard = "unnamed,unnamedplus"
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<Leader>cl", "<cmd>Lazy<cr>", { desc = "Lazy" })
+
+-- Move with Leader
+vim.keymap.set("n", "md", "<C-d>", { desc = "Half page down" })
+vim.keymap.set("n", "mu", "<C-u>", { desc = "Half page up" })
+vim.keymap.set("n", "mf", "<C-f>", { desc = "Page down" })
+vim.keymap.set("n", "mb", "<C-b>", { desc = "Page up" })
+
+-- Change split with leader
+vim.keymap.set("n", "<Leader>wh", "<C-w>h", { desc = "Left"})
+vim.keymap.set("n", "<Leader>wl", "<C-w>l", { desc = "Right"})
+vim.keymap.set("n", "<Leader>wj", "<C-w>j", { desc = "Down"})
+vim.keymap.set("n", "<Leader>wk", "<C-w>k", { desc = "Up"})
+
+vim.keymap.set("n", "d/", "<cmd>noh<cr>", { desc = "Clear highlight"})
 
 -- Lazy plugins
 require("lazy").setup({
@@ -82,6 +98,8 @@ require("lazy").setup({
 							require("mini.clue").gen_clues.z(),
 							{ mode = "n", keys = "<Leader>f", desc = "+Find" },
 							{ mode = "n", keys = "<Leader>c", desc = "+Code" },
+							{ mode = "n", keys = "<Leader>w", desc = "+Window" },
+							{ mode = "n", keys = "m", desc = "+Move" },
 						},
 					},
 				},
@@ -329,15 +347,10 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-	},
-	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.8",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope-fzf-native.nvim",
 			"nvim-telescope/telescope-ui-select.nvim",
 		},
 		config = function()
@@ -345,35 +358,41 @@ require("lazy").setup({
 			require("telescope").setup({
 				extensions = {
 					["ui-select"] = {
-						require("telescope.themes").get_dropdown({
-							-- even more opts
-						}),
-
-						-- pseudo code / specification for writing custom displays, like the one
-						-- for "codeactions"
-						-- specific_opts = {
-						--   [kind] = {
-						--     make_indexed = function(items) -> indexed_items, width,
-						--     make_displayer = function(widths) -> displayer
-						--     make_display = function(displayer) -> function(e)
-						--     make_ordinal = function(e) -> string
-						--   },
-						--   -- for example to disable the custom builtin "codeactions" display
-						--      do the following
-						--   codeactions = false,
-						-- }
+						require("telescope.themes").get_dropdown({}),
 					},
 				},
 			})
-			-- To get ui-select loaded and working with telescope, you need to call
-			-- load_extension, somewhere after setup function:
 			require("telescope").load_extension("ui-select")
 		end,
 		keys = {
 			{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find file" },
 			{ "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
 			{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffer" },
+			{ "<leader><leader>", "<cmd>Telescope buffers<cr>", desc = "Find buffer" },
 			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
+		},
+	},
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+		config = function()
+			require("telescope").load_extension("fzf")
+		end,
+	},
+	{
+		"LukasPietzschmann/telescope-tabs",
+		config = function()
+			require("telescope").load_extension("telescope-tabs")
+			require("telescope-tabs").setup({
+				-- Your custom config :^)
+			})
+		end,
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		keys = {
+			{ "<leader>ft", "<cmd>Telescope telescope-tabs list_tabs<cr>", desc = "Help" },
 		},
 	},
 })
