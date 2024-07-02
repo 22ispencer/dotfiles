@@ -109,15 +109,16 @@ require("lazy").setup({
 				"jump2d",
 				"notify",
 				"pairs",
-				{ "starter",
-                    opts = {
-                        items = {
-                            require("mini.starter").sections.recent_files(5, true),
-                            require("mini.starter").sections.recent_files(5, false),
-                            require("mini.starter").sections.builtin_actions(),
-                        }
-                    }
-                },
+				{
+					"starter",
+					opts = {
+						items = {
+							require("mini.starter").sections.recent_files(5, true),
+							require("mini.starter").sections.recent_files(5, false),
+							require("mini.starter").sections.builtin_actions(),
+						},
+					},
+				},
 				"statusline",
 				"surround",
 				"tabline",
@@ -400,6 +401,14 @@ require("lazy").setup({
 		keys = {
 			{ "<leader>ft", "<cmd>Telescope telescope-tabs list_tabs<cr>", desc = "Help" },
 		},
+	},
+	{
+		"OXY2DEV/markview.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons", -- Used by the code bloxks
+		},
+
+		config = true,
 	},
 })
 
