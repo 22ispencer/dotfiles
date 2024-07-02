@@ -161,6 +161,13 @@ require("lazy").setup({
 		},
 	},
 	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			local lspconfig = require("lspconfig")
+			lspconfig.gleam.setup({})
+		end,
+	},
+	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = {
 			"williamboman/mason.nvim",
