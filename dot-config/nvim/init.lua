@@ -231,6 +231,9 @@ require("lazy").setup({
 				signs = false,
 			})
 		end,
+        keys = {
+            { "<leader>cd", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Expand LSP Diagnostics"}
+        }
 	},
 	{
 		"nvimtools/none-ls.nvim",
@@ -246,7 +249,15 @@ require("lazy").setup({
 			"nvimtools/none-ls.nvim",
 		},
 		opts = {
-			handlers = {},
+			ensure_installed = {
+				"prettier",
+			},
+			handlers = {
+				prettier = function(source_name, methods)
+					local null_ls = require("null-ls")
+					null_ls.register(null_ls.builtins.formatting.prettier)
+				end,
+			},
 		},
 		keys = {
 			{ "<leader>cf", "<cmd>lua vim.lsp.buf.format()<cr>", desc = "Format buffer" },
@@ -356,7 +367,7 @@ require("lazy").setup({
 					"heex",
 					"javascript",
 					"html",
-                    "gleam",
+					"gleam",
 				},
 				sync_install = false,
 				highlight = { enable = true },
@@ -418,6 +429,9 @@ require("lazy").setup({
 		},
 
 		config = true,
+	},
+	{
+		"jlcrochet/vim-razor",
 	},
 })
 
