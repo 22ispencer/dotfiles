@@ -30,6 +30,7 @@ vim.opt.splitbelow = true
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<Leader>cl", "<cmd>Lazy<cr>", { desc = "Lazy" })
+vim.keymap.set("n", "<Leader>cd", vim.diagnostic.open_float, { desc= "Expand LSP diagnostics"})
 
 -- Move with Leader
 vim.keymap.set("n", "md", "<C-d>", { desc = "Half page down" })
@@ -231,9 +232,6 @@ require("lazy").setup({
 				signs = false,
 			})
 		end,
-        keys = {
-            { "<leader>cd", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Expand LSP Diagnostics"}
-        }
 	},
 	{
 		"nvimtools/none-ls.nvim",
