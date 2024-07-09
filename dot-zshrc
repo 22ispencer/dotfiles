@@ -105,7 +105,7 @@ fi
 
 alias pnv="poetry run nvim"
 
-export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$HOME/go/bin:$HOME/.cargo/bin"
 eval "$(starship init zsh)"
 neofetch | lolcat
 
