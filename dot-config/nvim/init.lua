@@ -257,6 +257,12 @@ require("lazy").setup({
 						extra_filetypes = { "astro" },
 					})
 				end,
+				rustywind = function()
+					local null_ls = require("null-ls")
+					null_ls.register(null_ls.builtins.formatting.rustywind).with({
+						extra_filetypes = { "astro" },
+					})
+				end,
 			},
 		},
 		keys = {
