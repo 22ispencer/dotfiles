@@ -30,7 +30,7 @@ vim.opt.splitbelow = true
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<Leader>cl", "<cmd>Lazy<cr>", { desc = "Lazy" })
-vim.keymap.set("n", "<Leader>cd", vim.diagnostic.open_float, { desc= "Expand LSP diagnostics"})
+vim.keymap.set("n", "<Leader>cd", vim.diagnostic.open_float, { desc = "Expand LSP diagnostics" })
 
 -- Move with Leader
 vim.keymap.set("n", "md", "<C-d>", { desc = "Half page down" })
@@ -253,7 +253,9 @@ require("lazy").setup({
 			handlers = {
 				prettier = function(source_name, methods)
 					local null_ls = require("null-ls")
-					null_ls.register(null_ls.builtins.formatting.prettier)
+					null_ls.register(null_ls.builtins.formatting.prettier).with({
+						extra_filetypes = { "astro" },
+					})
 				end,
 			},
 		},
@@ -353,7 +355,6 @@ require("lazy").setup({
 		build = ":TSUpdate",
 		config = function()
 			local configs = require("nvim-treesitter.configs")
-
 			configs.setup({
 				ensure_installed = {
 					"c",
