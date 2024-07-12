@@ -251,18 +251,10 @@ require("lazy").setup({
 				"prettier",
 			},
 			handlers = {
-				prettier = function(source_name, methods)
-					local null_ls = require("null-ls")
-					null_ls.register(null_ls.builtins.formatting.prettier).with({
-						extra_filetypes = { "astro" },
-					})
-				end,
-				rustywind = function()
-					local null_ls = require("null-ls")
-					null_ls.register(null_ls.builtins.formatting.rustywind).with({
-						extra_filetypes = { "astro" },
-					})
-				end,
+				-- prettier = function(source_name, methods)
+				-- 	local null_ls = require("null-ls")
+				-- 	null_ls.register(null_ls.builtins.formatting.prettier)
+				-- end,
 			},
 		},
 		keys = {
