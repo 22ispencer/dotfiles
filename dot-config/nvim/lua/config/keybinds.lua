@@ -18,6 +18,8 @@ vim.opt.splitbelow = true
 
 vim.keymap.set("n", "<Leader>cl", "<cmd>Lazy<cr>", { desc = "Lazy" })
 vim.keymap.set("n", "<Leader>cd", vim.diagnostic.open_float, { desc = "Expand LSP diagnostics" })
+vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action, { desc = "Open code actions" })
+vim.keymap.set("n", "<Leader>ci", "<cmd>LspInfo<cr>", { desc = "Show LSP info" })
 
 -- Move with Leader
 vim.keymap.set("n", "md", "<C-d>", { desc = "Half page down" })
@@ -33,5 +35,3 @@ vim.keymap.set("n", "<Leader>wk", "<C-w>k", { desc = "Up" })
 
 vim.keymap.set("n", "d/", "<cmd>noh<cr>", { desc = "Clear highlight" })
 vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
-
-
