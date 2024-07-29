@@ -126,10 +126,9 @@ return {
         "clang-format",
       },
       handlers = {
-        -- prettier = function(source_name, methods)
-        -- 	local null_ls = require("null-ls")
-        -- 	null_ls.register(null_ls.builtins.formatting.prettier)
-        -- end,
+        require("null-ls").builtins.formatting.prettier.with({
+          timeout = 100000,
+        }),
       },
     },
     keys = {
