@@ -7,8 +7,15 @@ return {
             "nvim-telescope/telescope-ui-select.nvim",
         },
         config = function()
-            -- This is your opts table
+            local actions = require("telescope.actions")
             require("telescope").setup({
+                defaults = {
+                    mappings = {
+                        i = {
+                            ["<esc>"] = actions.close,
+                        },
+                    },
+                },
                 extensions = {
                     ["ui-select"] = {
                         require("telescope.themes").get_dropdown({}),

@@ -59,7 +59,7 @@ return {
                         { mode = "n", keys = "<Leader>c", desc = "+Code" },
                         { mode = "n", keys = "<Leader>w", desc = "+Window" },
                         { mode = "n", keys = "<Leader>d", desc = "+Debug" },
-                        { mode = "n", keys = "m",         desc = "+Move" },
+                        { mode = "n", keys = "<Leader>s", desc = "+Sessions" },
                     },
                     window = {
                         config = { width = "auto" },
@@ -73,7 +73,29 @@ return {
             "jump2d",
             "notify",
             "pairs",
-            "sessions",
+            {
+                "sessions",
+                keys = {
+                    { "<Leader>fs", "<cmd>lua MiniSessions.select()<cr>",             desc = "Sessions" },
+                    {
+                        "<Leader>sg",
+                        function()
+                            local session_name
+                            vim.ui.input({ prompt = "Session name: " }, function(input)
+                                session_name = input
+                            end)
+                            MiniSessions.write(session_name)
+                        end,
+                        desc = "Save globally",
+                    },
+                    { "<Leader>sl", "<cmd>lua MiniSessions.write('Session.vim')<cr>", desc = "Save locally" },
+                    {
+                        "<Leader>sd",
+                        "<cmd>lua MiniSessions.select('delete')<cr>",
+                        desc = "Delete session",
+                    },
+                },
+            },
             {
                 "starter",
                 opts = {
@@ -96,7 +118,12 @@ return {
             local opts = {}
             if type(module) == "table" then
                 mod_name = module[1]
-                opts = module["opts"]
+                opts = module["opts"] or {}
+                if type(module["keys"]) == "table" then
+                    for _, v in pairs(module["keys"]) do
+                        vim.keymap.set(v["mode"] or "n", v[1], v[2], { desc = v["desc"] })
+                    end
+                end
             else
                 mod_name = module
             end

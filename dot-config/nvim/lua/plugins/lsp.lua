@@ -5,6 +5,9 @@ return {
             local lspconfig = require("lspconfig")
             lspconfig.gleam.setup({})
         end,
+        keys = {
+            { "<Leader>ci", "<cmd>LspInfo<cr>", desc = "Show LSP info" },
+        },
     },
     {
         "williamboman/mason-lspconfig.nvim",
@@ -13,9 +16,6 @@ return {
             "neovim/nvim-lspconfig",
             "hrsh7th/nvim-cmp",
             "hrsh7th/cmp-nvim-lsp",
-        },
-        keys = {
-            { "<Leader>ci", "<cmd>LspInfo<cr>", desc = "Show LSP info" },
         },
         config = function()
             require("mason-lspconfig").setup({
