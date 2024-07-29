@@ -58,6 +58,7 @@ return {
                         { mode = "n", keys = "<Leader>f", desc = "+Find" },
                         { mode = "n", keys = "<Leader>c", desc = "+Code" },
                         { mode = "n", keys = "<Leader>w", desc = "+Window" },
+                        { mode = "n", keys = "<Leader>d", desc = "+Debug" },
                         { mode = "n", keys = "m",         desc = "+Move" },
                     },
                     window = {
