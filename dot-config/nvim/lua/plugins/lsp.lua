@@ -92,7 +92,13 @@ return {
     },
     init = function()
       local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-      require("null-ls").setup({
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.prettier.with({
+            timeout = 100000,
+          }),
+        },
         -- you can reuse a shared lspconfig on_attach callback here
         on_attach = function(client, bufnr)
           if client.supports_method("textDocument/formatting") then
@@ -125,11 +131,7 @@ return {
         "black",
         "clang-format",
       },
-      handlers = {
-        require("null-ls").builtins.formatting.prettier.with({
-          timeout = 100000,
-        }),
-      },
+      handlers = {},
     },
     keys = {
       { "<leader>cf", "<cmd>lua vim.lsp.buf.format({ timeout_ms = 5000 })<cr>", desc = "Format buffer" },
