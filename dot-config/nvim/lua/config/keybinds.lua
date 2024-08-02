@@ -27,4 +27,6 @@ vim.keymap.set("n", "<Leader>wj", "<C-w>j", { desc = "Down" })
 vim.keymap.set("n", "<Leader>wk", "<C-w>k", { desc = "Up" })
 
 vim.keymap.set("n", "d/", "<cmd>noh<cr>", { desc = "Clear highlight" })
-vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
+vim.keymap.set("n", "U", "<C-r>")
+vim.keymap.set("ca", "h", "vert bo h")
+vim.keymap.set("ca", "help", "vert bo help")
