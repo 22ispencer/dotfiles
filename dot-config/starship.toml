@@ -80,6 +80,7 @@ symbol = "󰆥 "
 symbol = " "
 
 [nodejs]
+detect_files = ['package.json', '.node-version', '!bun.lockb']
 symbol = " "
 
 [ocaml]

@@ -7,6 +7,7 @@ fundle plugin nickeb96/puffer-fish
 fundle plugin jorgebucaran/autopair.fish
 fundle plugin jethrokuan/z
 fundle plugin gazorby/fish-abbreviation-tips
+fundle plugin PatrickF1/fzf.fish
 fundle init
 
 if status is-interactive
