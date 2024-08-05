@@ -1,11 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export EDITOR:nvim
-SETUVAR ZO_CMD:zo
-SETUVAR Z_CMD:z
-SETUVAR Z_DATA:/Users/isaacspencer/\x2elocal/share/z/data
-SETUVAR Z_DATA_DIR:/Users/isaacspencer/\x2elocal/share/z
-SETUVAR Z_EXCLUDE:\x5e/Users/isaacspencer\x24
 SETUVAR __fish_initialized:3400
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_color_autosuggestion:brblack
