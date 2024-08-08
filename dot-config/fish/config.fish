@@ -4,7 +4,7 @@ if status is-interactive;
         neofetch
     end
 
-    fish_vi_key_bindings
+    fish_hybrid_key_bindings
     fish_vi_cursor
 
     set fish_greeting
