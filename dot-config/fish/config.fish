@@ -18,6 +18,7 @@ if status is-interactive;
 
     set fish_greeting
     starship init fish | source
+	zoxide init fish | source
 end
 
 # Fundle (package manager)
