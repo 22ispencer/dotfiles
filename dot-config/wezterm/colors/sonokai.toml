@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+  "#2d2a2e",
+  "#f85e84",
+  "#9ecd6f",
+  "#e5c463",
+  "#ef9062",
+  "#ab9df2",
+  "#7accd7",
+  "#e3e1e4",
+]
+background = "#2d2a2e"
+brights = [
+  "#848089",
+  "#f85e84",
+  "#9ecd6f",
+  "#e5c463",
+  "#ef9062",
+  "#ab9df2",
+  "#7accd7",
+  "#e3e1e4",
+]
+cursor_bg = "#e3e1e4"
+cursor_border = "#e3e1e4"
+cursor_fg = "#2d2a2e"
+foreground = "#e3e1e4"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Sonokai Shusia"
