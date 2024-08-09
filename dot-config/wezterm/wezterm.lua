@@ -39,12 +39,4 @@ config.colors = {
 	compose_cursor = "#ef9062",
 }
 
-config.keys = {
-	{
-		key = "F11",
-		mods = "",
-		action = wezterm.action.ToggleFullscreen,
-	},
-}
-
 return config
