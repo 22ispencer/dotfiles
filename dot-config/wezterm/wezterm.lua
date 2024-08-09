@@ -42,6 +42,7 @@ config.colors = {
 config.keys = {
 	{
 		key = "F11",
+		mods = "",
 		action = wezterm.action.ToggleFullscreen,
 	},
 }
