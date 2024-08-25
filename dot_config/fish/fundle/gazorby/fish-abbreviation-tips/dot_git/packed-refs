@@ -1,0 +1,18 @@
+# pack-refs with: peeled fully-peeled sorted 
+aadfd86c771bd8b02d419c2830e045f2a3d32c5b refs/remotes/origin/0.7.0
+e298e97f8c206ec8cf5ff9a05e8702627892683d refs/remotes/origin/develop
+9594489feb3f2b84c37ab49f90c6a7d003620711 refs/remotes/origin/feat/disable-history-tips
+5441bf790c2f524afb53b707ea3e3d8ea2778b32 refs/remotes/origin/fix/trim-quotes
+8ed76a62bb044ba4ad8e3e6832640178880df485 refs/remotes/origin/master
+ec63614e0fb903bc3ce959e6c1676791cd899d3a refs/tags/0.5.0
+2c7112c949d8f40699c8d228bdad4d30f0e24c5e refs/tags/0.5.1
+30564fed28926a63afd064392493ed9abd7f6c30 refs/tags/v0.1.0
+bd87c47b090307cd2806b796072cbf081920b238 refs/tags/v0.2.0
+^cfa8599642d41aa0fee526d62c5f1265123ebfcb
+cc447eccdef9df8c3f7a7ef09fbb5df798bccdcd refs/tags/v0.3.0
+^a5e31027fd9b2db0cf583c0e3dce02dd4b46c6af
+fcf2adfb33ed7448431de25144a26d9daa9b9e0d refs/tags/v0.3.1
+^c23acbe64d0f8e6f81c72baec94bca50e6b3433a
+abf85102cb76285d1a18efd90408197dd30c5c6d refs/tags/v0.4.0
+4ff1f565b5773aadba028051f432984def921762 refs/tags/v0.6.0
+8ed76a62bb044ba4ad8e3e6832640178880df485 refs/tags/v0.7.0
