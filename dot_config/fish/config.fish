@@ -9,8 +9,8 @@ end
 
 if status is-interactive;
     # Commands to run in interactive sessions can go here
-    if type -q neofetch;
-        neofetch
+    if type -q fastfetch;
+        fastfetch
     end
 
     fish_hybrid_key_bindings
