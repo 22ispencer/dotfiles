@@ -37,4 +37,4 @@ end
 
 fish_add_path $HOME/go/bin
 fish_add_path $HOME/.cargo/bin
-
+source /usr/share/nvm/init-nvm.sh
