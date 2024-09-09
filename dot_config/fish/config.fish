@@ -1,11 +1,11 @@
-if type -q tmux
-and status is-interactive
-and not set -q TMUX
-	if not test -d ~/.tmux/plugins/tpm
-		git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-	end
-	exec tmux
-end
+# if type -q tmux
+# and status is-interactive
+# and not set -q TMUX
+# 	if not test -d ~/.tmux/plugins/tpm
+# 		git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# 	end
+# 	exec tmux
+# end
 
 if status is-interactive;
     # Commands to run in interactive sessions can go here
