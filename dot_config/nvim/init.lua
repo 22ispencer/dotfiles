@@ -32,6 +32,13 @@ vim.opt.foldmethod = "syntax"
 vim.opt.signcolumn = "yes:2"
 vim.opt.iskeyword:append("-")
 vim.opt.wrap = false
+if package.config:sub(1,1) == [[\]] then
+	vim.opt.shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell"
+	vim.cmd([[let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';Remove-Alias -Force -ErrorAction SilentlyContinue tee;']])
+	vim.cmd([[let &shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode']])
+	vim.cmd([[let &shellpipe  = '2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode']])
+	vim.cmd([[set shellquote= shellxquote=]])
+end
 vim.keymap.set("n", "U", "<C-r>")
 vim.keymap.set({ "i", "s" }, "<Tab>", function()
 	if vim.fn.pumvisible() == 1 then
