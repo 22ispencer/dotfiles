@@ -32,9 +32,11 @@ vim.opt.foldmethod = "syntax"
 vim.opt.signcolumn = "yes:2"
 vim.opt.iskeyword:append("-")
 vim.opt.wrap = false
-if package.config:sub(1,1) == [[\]] then
+if package.config:sub(1, 1) == [[\]] then
 	vim.opt.shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell"
-	vim.cmd([[let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';Remove-Alias -Force -ErrorAction SilentlyContinue tee;']])
+	vim.cmd(
+		[[let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';Remove-Alias -Force -ErrorAction SilentlyContinue tee;']]
+	)
 	vim.cmd([[let &shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode']])
 	vim.cmd([[let &shellpipe  = '2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode']])
 	vim.cmd([[set shellquote= shellxquote=]])
@@ -264,9 +266,10 @@ later(function()
 			miniclue.gen_clues.registers(),
 			miniclue.gen_clues.windows(),
 			miniclue.gen_clues.z(),
-			{ mode = "n", keys = "<Leader>f", desc = "+Find" },
-			{ mode = "n", keys = "<Leader>s", desc = "+Sessions" },
-			{ mode = "n", keys = "<Leader>c", desc = "+Code (LSP)" },
+			{ mode = "n", keys = "<Leader>f",  desc = "+Find" },
+			{ mode = "n", keys = "<Leader>s",  desc = "+Sessions" },
+			{ mode = "n", keys = "<Leader>c",  desc = "+Code" },
+			{ mode = "n", keys = "<Leader>cl", desc = "+LSP" },
 		},
 	})
 	require("mini.comment").setup()
@@ -360,7 +363,8 @@ later(function()
 	end, { desc = "Format buffer" })
 	vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename symbol" })
 	vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action, { desc = "Open code actions" })
-	vim.keymap.set("n", "<Leader>ci", "<cmd>LspInfo<cr>", { desc = "LSP Info" })
+	vim.keymap.set("n", "<Leader>cli", "<cmd>LspInfo<cr>", { desc = "Info" })
+	vim.keymap.set("n", "<Leader>clr", "<cmd>LspRestart<cr>", { desc = "Restart" })
 end)
 
 later(function()
