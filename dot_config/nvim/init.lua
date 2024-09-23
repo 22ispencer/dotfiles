@@ -93,7 +93,7 @@ now(function()
 	})
 	-- Possible to immediately execute code which depends on the added plugin
 	require("nvim-treesitter.configs").setup({
-		ensure_installed = { "lua", "vimdoc", "typescript", "css", "html", "astro" },
+		ensure_installed = { "lua", "vimdoc", "typescript", "css", "html", "astro", "markdown", "markdown_inline" },
 		highlight = { enable = true },
 	})
 
@@ -124,7 +124,7 @@ now(function()
 		ensure_installed = {
 			"gopls",
 			"pyright",
-			"tsserver",
+			"ts_ls",
 			"tailwindcss",
 			"clangd",
 			"html",
@@ -277,7 +277,7 @@ later(function()
 		},
 	})
 	require("mini.comment").setup()
-	require("mini.completion").setup()
+	-- require("mini.completion").setup()
 	require("mini.cursorword").setup()
 	require("mini.files").setup()
 	vim.keymap.set("n", "<Leader>e", function()
