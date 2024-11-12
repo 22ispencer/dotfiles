@@ -1,16 +1,18 @@
 ;; Caps to escape/control configuration for Kanata
 
 (defsrc
+ 	f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
  	grv  1    2    3    4    5    6    7    8    9    0    min  eql  bspc
 	tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
 	caps a    s    d    f    g    h    j    k    l    scln '    ret
 	lsft z    x    c    v    b    n    m    ,    .    /    rsft
+	fn
 	lctl lalt lmet
 	spc
 	rmet ralt rctl
 
-	    up
-	lft down rght
+	     up
+	left down rght
 )
 
 (defvar
@@ -32,17 +34,54 @@
   o (tap-hold $tt $ht o rmet)
   lsf (tap-dance 200 (lsft (caps-word 10000)))
   grv (tap-dance 200 (grv lrld))
+  fn (tap-dance $tt ((multi (layer-while-held media) (layer-while-held fn)) (on-press toggle-virtualkey fnlock)))
+)
+
+(defvirtualkeys
+	fnlock (layer-while-held media)
 )
 
 (deflayer colemak-base
- 	grv  1    2    3    4    5    6    7    8    9    0    min  eql  bspc
+ 	f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+ 	@grv 1    2    3    4    5    6    7    8    9    0    min  eql  bspc
 	tab  q    w    f    p    g    j    l    u    y    ;    [    ]    \
 	esc  @a   @r   @s   @t   d    h    @n   @e   @i   @o   '    ret
 	@lsf z    x    c    v    b    k    m    ,    .    /    rsft
+	@fn
 	lctl lalt lmet
 	spc
 	rmet ralt rctl
 
-	    up
-	lft down rght
+	     up
+	left down rght
+)
+
+(deflayer media
+ 	brup brdn _    _    _    _    prev pp   next mute vold volu
+ 	_    _    _    _    _    _    _    _    _    _    _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _
+	_
+	_    _    _
+	_
+	_    _    _
+
+	     _
+	_    _    _
+)
+
+(deflayer fn
+ 	_    _    _    _    _    _    _    _    _    _    _    _
+ 	_    _    _    _    _    _    _    _    _    _    _    _    _    del
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _
+	_
+	_    _    _
+	_
+	_    _    _
+
+	     pgup
+	home pgdn end
 )
