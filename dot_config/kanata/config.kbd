@@ -34,11 +34,12 @@
   o (tap-hold $tt $ht o rmet)
   lsf (tap-dance 200 (lsft (caps-word 10000)))
   grv (tap-dance 200 (grv lrld))
-  fn (tap-dance $tt ((multi (layer-while-held media) (layer-while-held fn)) (on-press toggle-virtualkey fnlock)))
+  fn (tap-dance $tt ((multi (layer-while-held media) (layer-while-held fn)) (on-press toggle-vkey medialock)))
+  mfn (tap-dance $tt ((multi (layer-while-held fn) (on-press release-vkey medialock) (on-release press-vkey medialock)) (on-press toggle-vkey medialock)))
 )
 
 (defvirtualkeys
-	fnlock (layer-while-held media)
+	medialock (layer-while-held media)
 )
 
 (deflayer colemak-base
@@ -57,12 +58,12 @@
 )
 
 (deflayer media
- 	brup brdn _    _    _    _    prev pp   next mute vold volu
+ 	brdn brup _    _    _    _    prev pp   next mute vold volu
  	_    _    _    _    _    _    _    _    _    _    _    _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _
-	_
+	@mfn
 	_    _    _
 	_
 	_    _    _
