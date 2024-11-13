@@ -27,6 +27,8 @@
 	e (tap-hold-release $tt $ht e rsft)
 	i (tap-hold-release $tt $ht i ralt)
 	o (tap-hold-release $tt $ht o rmet)
+	z (tap-hold-release $tt $ht z (layer-while-held button))
+	/ (tap-hold-release $tt $ht / (layer-while-held button))
 )
 
 ;; Base thumb cluster
@@ -76,11 +78,11 @@
 (deflayer base
 	q        w        f        p        g
 	@a       @r       @s       @t       d
-	z        x        c        v        b
+	@z       x        c        v        b
 
 	j        l        u        y        '
 	h        @n       @e       @i       @o
-	k        m        ,        .        /
+	k        m        ,        .        @/
 
 	@esc     @spc     @tab
 	@ret     @bsp     @del
