@@ -1,88 +1,249 @@
-;; Caps to escape/control configuration for Kanata
+;; personal implementation of the miryoku layout
 
-(defsrc
- 	f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
- 	grv  1    2    3    4    5    6    7    8    9    0    min  eql  bspc
-	tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-	caps a    s    d    f    g    h    j    k    l    scln '    ret
-	lsft z    x    c    v    b    n    m    ,    .    /    rsft
-	fn
-	lctl lalt lmet
-	spc
-	rmet ralt rctl
-
+(deftemplate keys-to-disable ()
+	esc f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12
+	` 6 = bspc
+	tab ] \
+	caps h ret
+	lsft z b . / rsft
+	lctl lalt lmet spc rmet ralt rctl
 	     up
 	left down rght
+)
+
+(deftemplate disabled-keys ()
+	XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+	XX   XX   XX   XX
+	XX   XX   XX
+	XX   XX   XX
+	XX   XX   XX   XX   XX   XX
+	XX   XX   XX   XX   XX   XX   XX
+	     XX
+	XX   XX   XX
+)
+
+(defsrc
+	1 2 3 4 5
+	q w e r t
+	a s d f g
+
+	7 8 9 0 -
+	u i o p [
+	j k l ; '
+
+	x c v n m ,
+	(t! keys-to-disable)
+)
+
+(platform (linux win winiov2 wintercept)
+ 	(defalias
+	 	scrnsht prnt
+	)
+)
+(platform (linux win winiov2 wintercept)
+	;; Clipboard commands
+	(defalias
+		copy  C-c
+		paste C-v
+		cut   C-x
+	)
+ )
+
+(platform (macos)
+	(defalias
+		scrnsht M-S-5
+	)
+)
+(platform (macos)
+	;; Clipboard commands
+	(defalias
+		copy  M-c
+		paste M-v
+		cut   M-x
+	)
 )
 
 (defvar
-  tap-time 200
-  hold-time 200
-  tt $tap-time
-  ht $hold-time
+	tt 200
+	ht 200
 )
 
-;; Definine two aliases, one for esc/control to other for function key
+;; Home-Row mod
 (defalias
-  a (tap-hold $tt $ht a lmet)
-  r (tap-hold $tt $ht r lalt)
-  s (tap-hold $tt $ht s lsft)
-  t (tap-hold $tt $ht t lctl)
-  n (tap-hold $tt $ht n rctl)
-  e (tap-hold $tt $ht e rsft)
-  i (tap-hold $tt $ht i ralt)
-  o (tap-hold $tt $ht o rmet)
-  lsf (tap-dance 200 (lsft (caps-word 10000)))
-  grv (tap-dance 200 (grv lrld))
-  fn (tap-dance $tt ((multi (layer-while-held media) (layer-while-held fn)) (on-press toggle-vkey medialock)))
-  mfn (tap-dance $tt ((multi (layer-while-held fn) (on-press release-vkey medialock) (on-release press-vkey medialock)) (on-press toggle-vkey medialock)))
+	a (tap-hold-release $tt $ht a lmet)
+	r (tap-hold-release $tt $ht r lalt)
+	s (tap-hold-release $tt $ht s lsft)
+	t (tap-hold-release $tt $ht t lctl)
+	n (tap-hold-release $tt $ht n rctl)
+	e (tap-hold-release $tt $ht e rsft)
+	i (tap-hold-release $tt $ht i ralt)
+	o (tap-hold-release $tt $ht o rmet)
+	z (tap-hold-release $tt $ht z (layer-while-held button))
+	/ (tap-hold-release $tt $ht / (layer-while-held button))
 )
 
-(defvirtualkeys
-	medialock (layer-while-held media)
+;; Base thumb cluster
+(defalias
+	esc (tap-hold-release $tt $ht esc (layer-while-held media))
+	spc (tap-hold-release $tt $ht spc (layer-while-held nav))
+	tab (tap-hold-release $tt $ht tab (layer-while-held mouse))
+	ret (tap-hold-release $tt $ht ret (layer-while-held sym))
+	bsp (tap-hold-release $tt $ht Backspace (layer-while-held num))
+	del (tap-hold-release $tt $ht del (layer-while-held fun))
 )
 
-(deflayer colemak-base
- 	f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
- 	@grv 1    2    3    4    5    6    7    8    9    0    min  eql  bspc
-	tab  q    w    f    p    g    j    l    u    y    ;    [    ]    \
-	esc  @a   @r   @s   @t   d    h    @n   @e   @i   @o   '    ret
-	@lsf z    x    c    v    b    k    m    ,    .    /    rsft
-	@fn
-	lctl lalt lmet
-	spc
-	rmet ralt rctl
 
-	     up
-	left down rght
+;; Additional nav aliases
+(defalias
+	undo C-z
+	redo C-y
+)
+
+;; Mouse timings
+(defvar
+	mouse-step-time  20
+	mouse-accel-time 1000
+	mouse-min-px     1
+	mouse-max-px     50
+	wheel-time      50
+	wheel-dist      120
+)
+
+;; Mouse aliases
+(defalias
+	mleft  (movemouse-accel-left  $mouse-step-time $mouse-accel-time $mouse-min-px $mouse-max-px)
+	mdown  (movemouse-accel-down  $mouse-step-time $mouse-accel-time $mouse-min-px $mouse-max-px)
+	mup    (movemouse-accel-up    $mouse-step-time $mouse-accel-time $mouse-min-px $mouse-max-px)
+	mright (movemouse-accel-right $mouse-step-time $mouse-accel-time $mouse-min-px $mouse-max-px)
+
+	wleft  (mwheel-left  $wheel-time $wheel-dist)
+	wdown  (mwheel-down  $wheel-time $wheel-dist)
+	wup    (mwheel-up    $wheel-time $wheel-dist)
+	wright (mwheel-right $wheel-time $wheel-dist)
+)
+
+(deflayer base
+	q        w        f        p        g
+	@a       @r       @s       @t       d
+	@z       x        c        v        b
+
+	j        l        u        y        '
+	h        @n       @e       @i       @o
+	k        m        ,        .        @/
+
+	@esc     @spc     @tab
+	@ret     @bsp     @del
+	(t! disabled-keys)
+)
+
+(deflayer nav
+	XX       XX       XX       XX       XX
+	lmet     lalt     lsft     lctl     XX
+	XX       XX       XX       XX       XX
+
+	@redo    @paste   @copy    @cut     @undo
+	caps     left     down     up       rght
+	ins      home     pgdn     pgup     end
+
+	XX       XX       XX
+	ret      bspc     del
+	(t! disabled-keys)
+)
+
+(deflayer mouse
+	XX       XX       XX       XX       XX
+	lmet     lalt     lsft     lctl     XX
+	XX       XX       XX       XX       XX
+
+	@redo    @paste   @copy    @cut     @undo
+	XX       @mleft   @mdown   @mup     @mright
+	XX       @wleft   @wdown   @wup     @wright
+
+	XX       XX       XX
+	mrgt     mlft     mmid
+	(t! disabled-keys)
+)
+
+(deflayer button
+	@undo    @cut     @copy    @paste   @redo
+	lmet     lalt     lsft     lctl     XX
+	@undo    @cut     @copy    @paste   @redo
+
+	@redo    @paste   @copy    @cut     @undo
+	XX       rctl     rsft     ralt     rmet
+	@redo    @paste   @copy    @cut     @undo
+
+	mmid     mlft     mrgt
+	mrgt     mlft     mmid
+	(t! disabled-keys)
 )
 
 (deflayer media
- 	brdn brup _    _    _    _    prev pp   next mute vold volu
- 	_    _    _    _    _    _    _    _    _    _    _    _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _
-	@mfn
-	_    _    _
-	_
-	_    _    _
+	XX       XX       XX       XX       XX
+	lmet     lalt     lsft     lctl     XX
+	XX       XX       XX       XX       XX
 
-	     _
-	_    _    _
+	XX       XX       XX       XX       XX
+	XX       next     vold     volu     prev
+	XX       XX       XX       XX       XX
+
+	XX       XX       XX
+	XX       pp       mute
+	(t! disabled-keys)
 )
 
-(deflayer fn
- 	_    _    _    _    _    _    _    _    _    _    _    _
- 	_    _    _    _    _    _    _    _    _    _    _    _    _    del
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _
-	_
-	_    _    _
-	_
-	_    _    _
+(deflayer num
+	[        7        8        9        ]
+	;        4        5        6        =
+	`        1        2        3        \
 
-	     pgup
-	home pgdn end
+	XX       XX       XX       XX       XX
+	XX       rctl     rsft     ralt     rmet
+	XX       XX       XX       XX       XX
+
+	.        0        -
+	XX       XX       XX
+	(t! disabled-keys)
+)
+
+(deflayer sym
+	S-[      S-7      S-8      S-9      S-]
+	S-;      S-4      S-5      S-6      S-=
+	S-`      S-1      S-2      S-3      S-\
+
+	XX       XX       XX       XX       XX
+	XX       rctl     rsft     ralt     rmet
+	XX       XX       XX       XX       XX
+
+	S-9      S-0      S--
+	XX       XX       XX
+	(t! disabled-keys)
+)
+
+(deflayer fun
+	F12      F7       F8       F9       @scrnsht
+	F11      F4       F5       F6       scrlck
+	F10      F1       F2       F3       pause
+
+	XX       XX       XX       XX       XX
+	XX       rctl     rsft     ralt     rmet
+	XX       XX       XX       XX       XX
+
+	menu     spc      tab
+	XX       XX       XX
+	(t! disabled-keys)
+)
+
+(deflayer dummy
+	XX       XX       XX       XX       XX
+	XX       XX       XX       XX       XX
+	XX       XX       XX       XX       XX
+
+	XX       XX       XX       XX       XX
+	XX       XX       XX       XX       XX
+	XX       XX       XX       XX       XX
+
+	XX       XX       XX
+	XX       XX       XX
+	(t! disabled-keys)
 )
