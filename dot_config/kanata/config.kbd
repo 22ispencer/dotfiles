@@ -101,18 +101,20 @@
 
 ;; Mouse timings
 (defvar
-	mouse-move-time 10
-	mouse-move-px   5
+	mouse-step-time  20
+	mouse-accel-time 1000
+	mouse-min-px     1
+	mouse-max-px     50
 	wheel-time      50
 	wheel-dist      120
 )
 
 ;; Mouse aliases
 (defalias
-	mleft  (movemouse-accel-left  10 300 1 10)
-	mdown  (movemouse-accel-down  10 300 1 10)
-	mup    (movemouse-accel-up    10 300 1 10)
-	mright (movemouse-accel-right 10 300 1 10)
+	mleft  (movemouse-accel-left  $mouse-step-time $mouse-accel-time $mouse-min-px $mouse-max-px)
+	mdown  (movemouse-accel-down  $mouse-step-time $mouse-accel-time $mouse-min-px $mouse-max-px)
+	mup    (movemouse-accel-up    $mouse-step-time $mouse-accel-time $mouse-min-px $mouse-max-px)
+	mright (movemouse-accel-right $mouse-step-time $mouse-accel-time $mouse-min-px $mouse-max-px)
 
 	wleft  (mwheel-left  $wheel-time $wheel-dist)
 	wdown  (mwheel-down  $wheel-time $wheel-dist)
