@@ -39,11 +39,27 @@
  	(defalias
 	 	scrnsht prnt
 	)
+)
+(platform (linux win winiov2 wintercept)
+	;; Clipboard commands
+	(defalias
+		copy  C-c
+		paste C-v
+		cut   C-x
+	)
  )
 
 (platform (macos)
 	(defalias
 		scrnsht M-S-5
+	)
+)
+(platform (macos)
+	;; Clipboard commands
+	(defalias
+		copy  M-c
+		paste M-v
+		cut   M-x
 	)
 )
 
@@ -76,12 +92,6 @@
 	del (tap-hold-release $tt $ht del (layer-while-held fun))
 )
 
-;; Clipboard commands
-(defalias
-	copy  C-c
-	paste C-v
-	cut   C-x
-)
 
 ;; Additional nav aliases
 (defalias
