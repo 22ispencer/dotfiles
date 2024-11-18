@@ -23,9 +23,8 @@
 (defvar system-font-size 12.0)
 (when (eq system-type 'darwin)
   (setq system-font-size 14.0))
-(when (string-match "-[Mm]icrosoft" operating-system-release)
-  (setq system-font-size 24.0)
-  )
+(when (string-match "-[Mm]icrosoft" (shell-command-to-string "uname -a"))
+  (setq system-font-size 24.0))
 (setq doom-font (font-spec :family "Fira Code" :size system-font-size :weight 'semi-light))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -86,3 +85,4 @@
 (after! avy
   (setq avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o)))
 
+(setq projectile-project-search-path '("~/repos/"))
