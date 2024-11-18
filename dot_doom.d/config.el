@@ -20,8 +20,13 @@
 ;;
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
-;;
-(setq doom-font (font-spec :family "Fira Code" :size 14.0 :weight 'semi-light))
+(defvar system-font-size 12.0)
+(when (eq system-type 'darwin)
+  (setq system-font-size 14.0))
+(when (string-match "-[Mm]icrosoft" operating-system-release)
+  (setq system-font-size 24.0)
+  )
+(setq doom-font (font-spec :family "Fira Code" :size system-font-size :weight 'semi-light))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
