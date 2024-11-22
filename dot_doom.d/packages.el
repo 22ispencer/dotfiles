@@ -51,3 +51,4 @@
 
 (package! rainbow-mode)
 (package! xenops)
+(package! exec-path-from-shell)

@@ -112,7 +112,7 @@
 
        :lang
        ;;agda              ; types of types of types of types...
-       (astro +lsp)
+       ;; (astro +lsp)
        ;;beancount         ; mind the GAAP
        (cc +lsp +tree-sitter)         ; C > C++ == 1
        ;;clojure           ; java with a lisp
@@ -152,12 +152,12 @@
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       (org +roam2 +jupyter +pandoc +pretty +journal)               ; organize your plain life in plain text
+       (org +pandoc +pretty +journal)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;graphviz          ; diagrams for confusing yourself even more
        ;;purescript        ; javascript, but functional
-       (python +lsp +pyright +poetry +treesitter)            ; beautiful is better than ugly
+       (python +lsp +pyright +poetry +tree-sitter)            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
@@ -174,7 +174,7 @@
        ;;terra             ; Earth and Moon in alignment for performance.
        (web +lsp +tree-sitter)               ; the tubes
        ;;yaml              ; JSON, but readable
-       (zig +lsp +treesitter)               ; C, but simpler
+       (zig +lsp +tree-sitter)               ; C, but simpler
 
        :email
        ;;(mu4e +org +gmail)

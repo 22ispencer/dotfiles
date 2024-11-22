@@ -20,6 +20,8 @@
 ;;
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 (defvar system-font-size 12.0)
 (when (eq system-type 'darwin)
   (setq system-font-size 14.0))
@@ -86,3 +88,5 @@
   (setq avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o)))
 
 (setq projectile-project-search-path '("~/repos/"))
+
+;; (add-hook 'python-mode-hook #'lsp-deferred)
