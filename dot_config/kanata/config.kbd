@@ -97,6 +97,7 @@
 (defalias
 	undo C-z
 	redo C-y
+	cw (caps-word 65535)
 )
 
 ;; Mouse timings
@@ -142,7 +143,7 @@
 	XX       XX       XX       XX       XX
 
 	@redo    @paste   @copy    @cut     @undo
-	caps     left     down     up       rght
+	@cw      left     down     up       rght
 	ins      home     pgdn     pgup     end
 
 	XX       XX       XX
