@@ -7,3 +7,4 @@ abbr -a --position anywhere -- zyp zypper
 abbr -a -- gco 'git checkout'
 abbr -a -- gdr 'git stash -u && git stash drop'
 abbr -a -- cz chezmoi
+abbr -a -- vnv 'python -m venv .venv; source .venv/bin/activate.fish'
