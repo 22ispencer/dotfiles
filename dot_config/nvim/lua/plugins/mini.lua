@@ -1,5 +1,5 @@
 return {
-	{ "echasnovski/mini.ai",         version = false, opts = {} },
+	{ "echasnovski/mini.ai", version = false, opts = {} },
 	{
 		"echasnovski/mini.basics",
 		version = false,
@@ -11,10 +11,19 @@ return {
 			},
 		},
 	},
-	{ "echasnovski/mini.bracketed",  version = false, opts = {} },
-	{ "echasnovski/mini.completion", version = false, opts = {} },
+	{ "echasnovski/mini.bracketed", version = false, opts = {} },
+	{
+		"echasnovski/mini.completion",
+		version = false,
+		opts = {},
+		lazy = false,
+		keys = {
+			{ "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], mode = "i", expr = true },
+			{ "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], mode = "i", expr = true },
+		},
+	},
 	{ "echasnovski/mini.cursorword", version = false, opts = {} },
-	{ "echasnovski/mini.diff",       version = false, opts = {} },
+	{ "echasnovski/mini.diff", version = false, opts = {} },
 	{
 		"echasnovski/mini.files",
 		version = false,
@@ -29,13 +38,13 @@ return {
 			},
 		},
 	},
-	{ "echasnovski/mini.icons",    version = false, opts = {} },
-	{ "echasnovski/mini.jump",     version = false, opts = {} },
-	{ "echasnovski/mini.jump2d",   version = false, opts = {} },
-	{ "echasnovski/mini.pairs",    version = false, opts = {} },
+	{ "echasnovski/mini.icons", version = false, opts = {} },
+	{ "echasnovski/mini.jump", version = false, opts = {} },
+	{ "echasnovski/mini.jump2d", version = false, opts = {} },
+	{ "echasnovski/mini.pairs", version = false, opts = {} },
 	{ "echasnovski/mini.sessions", version = false, opts = {} },
 	{ "echasnovski/mini.surround", version = false, opts = {} },
-	{ "echasnovski/mini.tabline",  version = false, opts = {} },
+	{ "echasnovski/mini.tabline", version = false, opts = {} },
 	{
 		"echasnovski/mini.trailspace",
 		version = false,
