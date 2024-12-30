@@ -1,5 +1,5 @@
 return {
-	{ "echasnovski/mini.ai",         version = false, opts = {}, },
+	{ "echasnovski/mini.ai",         version = false, opts = {} },
 	{
 		"echasnovski/mini.basics",
 		version = false,
@@ -7,35 +7,47 @@ return {
 
 			mappings = {
 				windows = true,
-				move_with_alt = true
-			}
-		}
+				move_with_alt = true,
+			},
+		},
 	},
-	{ "echasnovski/mini.bracketed",  version = false, opts = {}, },
-	{ "echasnovski/mini.completion", version = false, opts = {}, },
-	{ "echasnovski/mini.cursorword", version = false, opts = {}, },
-	{ "echasnovski/mini.diff",       version = false, opts = {}, },
+	{ "echasnovski/mini.bracketed",  version = false, opts = {} },
+	{ "echasnovski/mini.completion", version = false, opts = {} },
+	{ "echasnovski/mini.cursorword", version = false, opts = {} },
+	{ "echasnovski/mini.diff",       version = false, opts = {} },
 	{
 		"echasnovski/mini.files",
 		version = false,
 		opts = {},
 		keys = {
-			{ "<leader>e", function() MiniFiles.open() end, desc = "file explorer" },
-		}
+			{
+				"<leader>e",
+				function()
+					MiniFiles.open()
+				end,
+				desc = "file explorer",
+			},
+		},
 	},
-	{ "echasnovski/mini.icons",    version = false, opts = {}, },
-	{ "echasnovski/mini.jump",     version = false, opts = {}, },
-	{ "echasnovski/mini.jump2d",   version = false, opts = {}, },
-	{ "echasnovski/mini.pairs",    version = false, opts = {}, },
-	{ "echasnovski/mini.sessions", version = false, opts = {}, },
-	{ "echasnovski/mini.surround", version = false, opts = {}, },
-	{ "echasnovski/mini.tabline",  version = false, opts = {}, },
+	{ "echasnovski/mini.icons",    version = false, opts = {} },
+	{ "echasnovski/mini.jump",     version = false, opts = {} },
+	{ "echasnovski/mini.jump2d",   version = false, opts = {} },
+	{ "echasnovski/mini.pairs",    version = false, opts = {} },
+	{ "echasnovski/mini.sessions", version = false, opts = {} },
+	{ "echasnovski/mini.surround", version = false, opts = {} },
+	{ "echasnovski/mini.tabline",  version = false, opts = {} },
 	{
 		"echasnovski/mini.trailspace",
 		version = false,
 		opts = {},
 		keys = {
-			{ "<leader>ct", function() MiniTrailspace.trim() end, desc = "remove trailing spaces" }
-		}
+			{
+				"<leader>ct",
+				function()
+					MiniTrailspace.trim()
+				end,
+				desc = "remove trailing spaces",
+			},
+		},
 	},
 }
