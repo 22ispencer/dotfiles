@@ -2,12 +2,12 @@
 theme = Sonokai Shusia
 
 # Fonts
-font-family-italic = Monaspace Radon Italic
+font-family-italic = Monaspace Radon
 
 font-family = Monaspace Argon
 font-family = Fira Code
 ## for some fallback icons such as ⇡ 
-font-family = Cascadia Code
+font-family = DejaVu Sans Mono
 
 font-size = 18
 
