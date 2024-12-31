@@ -28,9 +28,29 @@ return {
 		require("telescope").load_extension("fzf")
 	end,
 	keys = {
-		{ "<leader>ff",       require("telescope.builtin").find_files },
-		{ "<leader>fg",       require("telescope.builtin").live_grep },
-		{ "<leader><leader>", require("telescope.builtin").buffers },
-		{ "<leader>fh",       require("telescope.builtin").help_tags },
+		{
+			"<leader>ff",
+			function()
+				require("telescope.builtin").find_files()
+			end,
+		},
+		{
+			"<leader>fg",
+			function()
+				require("telescope.builtin").live_grep()
+			end,
+		},
+		{
+			"<leader><leader>",
+			function()
+				require("telescope.builtin").buffers()
+			end,
+		},
+		{
+			"<leader>fh",
+			function()
+				require("telescope.builtin").help_tags()
+			end,
+		},
 	},
 }

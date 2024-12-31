@@ -6,7 +6,6 @@ return {
 		opts = {
 
 			mappings = {
-				windows = true,
 				move_with_alt = true,
 			},
 		},
@@ -43,6 +42,21 @@ return {
 	{ "echasnovski/mini.jump2d", version = false, opts = {} },
 	{ "echasnovski/mini.pairs", version = false, opts = {} },
 	{ "echasnovski/mini.sessions", version = false, opts = {} },
+	{
+		"echasnovski/mini.snippets",
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+		},
+		version = false,
+		config = function()
+			local gen_loader = require("mini.snippets").gen_loader
+			require("mini.snippets").setup({
+				snippets = {
+					gen_loader.from_lang(),
+				},
+			})
+		end,
+	},
 	{ "echasnovski/mini.surround", version = false, opts = {} },
 	{ "echasnovski/mini.tabline", version = false, opts = {} },
 	{
