@@ -1,7 +1,7 @@
 return {
 	{
 		"nvimtools/none-ls.nvim",
-		config = function()
+			config = function()
 			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 			require("null-ls").setup({
 				-- you can reuse a shared lspconfig on_attach callback here

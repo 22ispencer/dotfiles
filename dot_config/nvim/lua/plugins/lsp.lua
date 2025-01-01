@@ -47,6 +47,13 @@ return {
 						},
 					})
 				end,
+				elixirls = function()
+					require("lspconfig").elixirls.setup({
+						filetypes = { "elixir", "eelixir", "heex", "surface" },
+						root_dir = require("lspconfig").util.root_pattern("mix.exs", ".git") or vim.loop.os_homedir(),
+						cmd = { "elixir-ls" },
+					})
+				end,
 				function(server_name)
 					require("lspconfig")[server_name].setup({})
 				end,
