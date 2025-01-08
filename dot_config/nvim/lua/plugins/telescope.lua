@@ -34,24 +34,28 @@ return {
 			function()
 				require("telescope.builtin").find_files()
 			end,
+			desc = "Find in files",
 		},
 		{
 			"<leader>fg",
 			function()
 				require("telescope.builtin").live_grep()
 			end,
+			desc = "Grep in files",
 		},
 		{
 			"<leader><leader>",
 			function()
 				require("telescope.builtin").buffers()
 			end,
+			desc = "Find in buffers",
 		},
 		{
 			"<leader>fh",
 			function()
 				require("telescope.builtin").help_tags()
 			end,
+			desc = "Find in help docs",
 		},
 	},
 }
