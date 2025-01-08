@@ -29,7 +29,6 @@ fundle plugin nickeb96/puffer-fish
 fundle plugin jorgebucaran/autopair.fish
 fundle plugin gazorby/fish-abbreviation-tips
 fundle plugin PatrickF1/fzf.fish
-fundle plugin 'danhper/fish-ssh-agent'
 fundle init
 
 if test (uname) = Darwin;
