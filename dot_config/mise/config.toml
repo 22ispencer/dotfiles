@@ -1,6 +1,7 @@
 [tools]
 python = "latest"
-node = "lts"
+node = "latest"
 deno = "latest"
 bun = "latest"
 go = "latest"
+pnpm = "latest"
