@@ -9,3 +9,4 @@ chezmoi init 22ispencer
 ## Sections
 
 - [Neovim](dot_config/nvim)
+- [fish](dot_config/fish)
