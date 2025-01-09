@@ -1,5 +1,0 @@
-## Description
-
-## Related issues
-
-## Notes
