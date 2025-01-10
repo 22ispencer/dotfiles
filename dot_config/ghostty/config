@@ -9,7 +9,7 @@ font-family = Fira Code
 ## for some fallback icons such as ⇡ 
 font-family = DejaVu Sans Mono
 
-font-size = 22
+font-size = 16
 
 ## font features for ligature support on monaspace
 font-feature = calt
