@@ -45,8 +45,8 @@ return {
 						if client.workspace_folders then
 							local path = client.workspace_folders[1].name
 							if
-									vim.loop.fs_stat(path .. "/.luarc.json")
-									or vim.loop.fs_stat(path .. "/.luarc.jsonc")
+								vim.loop.fs_stat(path .. "/.luarc.json")
+								or vim.loop.fs_stat(path .. "/.luarc.jsonc")
 							then
 								return
 							end
@@ -97,6 +97,13 @@ return {
 						end
 					end,
 					single_file_support = false,
+				})
+			end,
+			tailwindcss = function()
+				require("lspconfig").tailwindcss.setup({
+					on_attach = function(client, bufnr)
+						vim.bo[bufnr].iskeyword = vim.bo[bufnr].iskeyword .. ",-"
+					end,
 				})
 			end,
 			function(server_name)
