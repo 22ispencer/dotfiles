@@ -1,3 +1,0 @@
-[submodule "dot_config/nvim"]
-	path = dot_config/external_nvim
-	url = https://github.com/22ispencer/nvim-dotfiles.git
