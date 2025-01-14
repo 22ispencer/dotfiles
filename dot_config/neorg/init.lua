@@ -65,6 +65,21 @@ require("lazy").setup({
 								default_workspace = "notes",
 							},
 						},
+						["core.esupports.metagen"] = { config = { type = "auto", update_date = true } },
+						["core.qol.toc"] = {},
+						["core.qol.todo_items"] = {},
+						["core.looking-glass"] = {},
+						["core.export"] = {},
+						["core.export.markdown"] = { config = { extensions = "all" } },
+						["core.summary"] = {},
+						["core.tangle"] = { config = { report_on_empty = false } },
+						["core.ui.calendar"] = {},
+						["core.journal"] = {
+							config = {
+								strategy = "flat",
+								workspace = "Notes",
+							},
+						},
 					},
 				})
 
